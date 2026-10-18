@@ -79,6 +79,7 @@ jobs:
         if: always() && needs.changes.outputs.code_checks == 'true'
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 1  # 用户 2026-10-18 原话「留1天最多了」
           name: memory-benchmark-summary
           path: .cache/greyfield-memory-benchmark/latest/summary.json
           if-no-files-found: error
@@ -216,6 +217,7 @@ jobs:
         if: always() && needs.changes.outputs.frontend_visual == 'true'
         uses: actions/upload-artifact@v4
         with:
+          retention-days: 1  # 用户 2026-10-18 原话「留1天最多了」
           name: frontend-visual-artifacts
           path: .cache/greyfield-v1-visual-acceptance/latest/
           if-no-files-found: error
