@@ -205,7 +205,8 @@ export interface GreyfieldProviderEndpoint {
   apiKey: string;
 }
 
-function endpointOverride(value: unknown): string {
+function endpointOverride(value: string | undefined): string {
+  // 旧配置文件里没有这些字段，运行时可能是 undefined，这里统一按"未设置"处理
   return typeof value === "string" ? value.trim() : "";
 }
 

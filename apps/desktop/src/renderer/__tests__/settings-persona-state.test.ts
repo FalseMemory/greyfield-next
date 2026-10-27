@@ -356,7 +356,15 @@ describe("Settings persona state", () => {
     handlers.get("settings:changed")?.({
       ...config,
       characterFile: "characters/b.yaml",
-      provider: { ...config.provider, apiKey: "", hasApiKey: false, asrApiKey: "", ttsApiKey: "", hasAsrApiKey: false, hasTtsApiKey: false }
+      provider: {
+        ...config.provider,
+        apiKey: "",
+        hasApiKey: false,
+        asrApiKey: "",
+        ttsApiKey: "",
+        hasAsrApiKey: false,
+        hasTtsApiKey: false
+      }
     } satisfies DesktopIpcEventMap["settings:changed"]);
 
     expect(sent).toContainEqual(["settings:update", { characterFile: "characters/b.yaml" }]);

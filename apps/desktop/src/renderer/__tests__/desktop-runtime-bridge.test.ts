@@ -1212,7 +1212,16 @@ describe("createDesktopRuntimeBridge", () => {
 
     settingsChanged?.({
       ...bridge.getConfigSnapshot(),
-      provider: { ...bridge.getConfigSnapshot().provider, apiKey: "", model: "main-process-model", hasApiKey: false, asrApiKey: "", ttsApiKey: "", hasAsrApiKey: false, hasTtsApiKey: false }
+      provider: {
+        ...bridge.getConfigSnapshot().provider,
+        apiKey: "",
+        model: "main-process-model",
+        hasApiKey: false,
+        asrApiKey: "",
+        ttsApiKey: "",
+        hasAsrApiKey: false,
+        hasTtsApiKey: false
+      }
     });
 
     expect(bridge.getState().settings.providerModel).toBe("main-process-model");
@@ -1232,7 +1241,15 @@ describe("createDesktopRuntimeBridge", () => {
 
     settingsChanged?.({
       ...bridge.getConfigSnapshot(),
-      provider: { ...bridge.getConfigSnapshot().provider, apiKey: API_KEY_MASK, hasApiKey: true, asrApiKey: "", ttsApiKey: "", hasAsrApiKey: false, hasTtsApiKey: false }
+      provider: {
+        ...bridge.getConfigSnapshot().provider,
+        apiKey: API_KEY_MASK,
+        hasApiKey: true,
+        asrApiKey: "",
+        ttsApiKey: "",
+        hasAsrApiKey: false,
+        hasTtsApiKey: false
+      }
     });
 
     expect(bridge.getState().settings.providerApiKey).toBe("");
@@ -1276,7 +1293,15 @@ describe("createDesktopRuntimeBridge", () => {
     bridge.updateSettings({ providerApiKey: "typed-secret" });
     settingsChanged?.({
       ...bridge.getConfigSnapshot(),
-      provider: { ...bridge.getConfigSnapshot().provider, apiKey: API_KEY_MASK, hasApiKey: true, asrApiKey: "", ttsApiKey: "", hasAsrApiKey: false, hasTtsApiKey: false }
+      provider: {
+        ...bridge.getConfigSnapshot().provider,
+        apiKey: API_KEY_MASK,
+        hasApiKey: true,
+        asrApiKey: "",
+        ttsApiKey: "",
+        hasAsrApiKey: false,
+        hasTtsApiKey: false
+      }
     });
 
     expect(bridge.getState().settings.providerApiKey).toBe("typed-secret");
@@ -1299,7 +1324,15 @@ describe("createDesktopRuntimeBridge", () => {
     bridge.updateSettings({ providerApiKey: "new-secret" });
     settingsChanged?.({
       ...bridge.getConfigSnapshot(),
-      provider: { ...bridge.getConfigSnapshot().provider, apiKey: "", hasApiKey: false, asrApiKey: "", ttsApiKey: "", hasAsrApiKey: false, hasTtsApiKey: false }
+      provider: {
+        ...bridge.getConfigSnapshot().provider,
+        apiKey: "",
+        hasApiKey: false,
+        asrApiKey: "",
+        ttsApiKey: "",
+        hasAsrApiKey: false,
+        hasTtsApiKey: false
+      }
     });
 
     expect(bridge.getState().settings.providerApiKey).toBe("new-secret");
