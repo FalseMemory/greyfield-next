@@ -230,15 +230,6 @@ export function resolveProviderEndpoint(
   };
 }
 
-/** 该能力是否配置了独立端点，供设置界面区分"复用全局"和"已自定义"。 */
-export function hasProviderEndpointOverride(
-  config: Pick<GreyfieldConfig, "provider">,
-  capability: GreyfieldProviderCapability
-): boolean {
-  const provider = config.provider;
-  return endpointOverride(capability === "asr" ? provider.asrBaseUrl : provider.ttsBaseUrl).length > 0;
-}
-
 function normalizeProviderConfig(partial: GreyfieldConfigPatch["provider"] | undefined): GreyfieldConfig["provider"] {
   const input = partial ?? {};
   const taskModels = input.taskModels ?? {};

@@ -4,7 +4,6 @@ import { join } from "node:path";
 import { tmpdir } from "node:os";
 import {
   defaultGreyfieldConfig,
-  hasProviderEndpointOverride,
   loadGreyfieldConfig,
   mergeConfig,
   resolveProviderEndpoint,
@@ -309,7 +308,6 @@ describe("Greyfield config", () => {
       baseUrl: config.provider.baseUrl,
       apiKey: config.provider.apiKey
     });
-    expect(hasProviderEndpointOverride(config, "asr")).toBe(false);
   });
 
   it("resolves a capability endpoint from its override plus the shared values it does not override", () => {
@@ -333,8 +331,6 @@ describe("Greyfield config", () => {
       baseUrl: "http://127.0.0.1:8787/v1",
       apiKey: "tts-key"
     });
-    expect(hasProviderEndpointOverride(config, "asr")).toBe(true);
-    expect(hasProviderEndpointOverride(config, "tts")).toBe(true);
   });
 
   it("treats blank overrides as absent so stray whitespace does not break the fallback", () => {
@@ -352,7 +348,6 @@ describe("Greyfield config", () => {
       baseUrl: "https://chat.example/v1",
       apiKey: "chat-key"
     });
-    expect(hasProviderEndpointOverride(config, "asr")).toBe(false);
   });
 
   it("keeps resolving for config files written before the capability endpoint fields existed", () => {
@@ -364,6 +359,5 @@ describe("Greyfield config", () => {
       baseUrl: "https://chat.example/v1",
       apiKey: "chat-key"
     });
-    expect(hasProviderEndpointOverride(legacy, "tts")).toBe(false);
   });
 });

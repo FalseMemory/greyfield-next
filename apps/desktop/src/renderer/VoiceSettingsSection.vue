@@ -48,7 +48,7 @@
           :value="state.settings.providerASRApiKey"
           autocomplete="off"
           spellcheck="false"
-          :placeholder="state.settings.providerHasASRApiKey ? t('provider.savedApiKey') : t('field.endpointFallback')"
+          :placeholder="state.settings.providerHasASRApiKey ? t('provider.savedApiKey') : t('field.apiKeyFallback')"
           type="password"
           @input="emit('update-setting', 'providerASRApiKey', valueFrom($event))"
         />
@@ -89,7 +89,7 @@
           :value="state.settings.providerTTSApiKey"
           autocomplete="off"
           spellcheck="false"
-          :placeholder="state.settings.providerHasTTSApiKey ? t('provider.savedApiKey') : t('field.endpointFallback')"
+          :placeholder="state.settings.providerHasTTSApiKey ? t('provider.savedApiKey') : t('field.apiKeyFallback')"
           type="password"
           @input="emit('update-setting', 'providerTTSApiKey', valueFrom($event))"
         />

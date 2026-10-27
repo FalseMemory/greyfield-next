@@ -1,7 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import {
   defaultGreyfieldConfig,
-  hasProviderEndpointOverride,
   mergeConfig,
   resolveProviderEndpoint,
   type GreyfieldConfig,
@@ -12,7 +11,6 @@ import {
 
 export {
   defaultGreyfieldConfig,
-  hasProviderEndpointOverride,
   mergeConfig,
   resolveProviderEndpoint,
   type GreyfieldConfig,

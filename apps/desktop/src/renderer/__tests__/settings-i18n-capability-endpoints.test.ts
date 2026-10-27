@@ -10,7 +10,8 @@ const capabilityEndpointKeys: SettingsI18nKey[] = [
   "field.asrApiKey",
   "field.ttsBaseUrl",
   "field.ttsApiKey",
-  "field.endpointFallback"
+  "field.endpointFallback",
+  "field.apiKeyFallback"
 ];
 
 describe("capability endpoint settings copy", () => {
@@ -23,5 +24,8 @@ describe("capability endpoint settings copy", () => {
     expect(settingsT("zh-CN", "field.asrBaseUrl")).toContain("地址");
     expect(settingsT("zh-CN", "field.ttsBaseUrl")).toContain("地址");
     expect(settingsT("zh-CN", "field.endpointFallback")).toContain("留空");
+    // 密钥框和地址框的提示要分开，别让用户以为密钥也是"上面的地址"
+    expect(settingsT("zh-CN", "field.apiKeyFallback")).toContain("密钥");
+    expect(settingsT("zh-CN", "field.endpointFallback")).not.toContain("密钥");
   });
 });
